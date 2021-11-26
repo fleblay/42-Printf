@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:09:57 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/26 19:11:30 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/26 19:42:27 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_arg
 	int		spce;
 	int		plus;
 	char	arg;
+	int		len;
 }			t_arg;
 
 int	ft_printf(const char *s, ...);
