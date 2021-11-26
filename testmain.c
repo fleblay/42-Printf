@@ -31,7 +31,12 @@ int main(void)
 	printf("%%");
 	printf("\n");
 	printf("ici\n");
-	printf("result si chaine vide : %d", printf(""));
+	printf("result si chaine vide : %d\n", printf(""));
+	printf("'nb=%#18.8X'\n", 12345);
+	printf("'nb=%#18.8X'\n", 12345);
+	printf("'nb=%#-18.8X'\n", -12345);
+	printf("'nb=%#-18.6X'\n", -12345);
+	printf("'nb=%#+18.8X'\n", 12345);
 	//printf(NULL);
 	return (0);
 }
