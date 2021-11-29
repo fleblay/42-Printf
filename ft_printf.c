@@ -6,13 +6,14 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:07:50 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/26 18:11:13 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:36:59 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 int	ft_isarg(char c)
 {
@@ -29,14 +30,24 @@ int	ft_isarg(char c)
 	return (0);
 }
 
-int	ft_gsd(const char *s, va_list arg)
+int	ft_gsd(char *s, va_list arg)
 {
 	/* substr de s jusqu'a fin arg qu'on envoie a la bonne fx. Penser a free*/
 	/* Penser a ce que la fx return le nombre de char ecrits !*/
-	while (*s && !ft_isarg(*s) && s++);
+
+	/*while (*s && !ft_isarg(*s) && s++);
 	if (*s && *s == 'd')
 		ft_putnbr_fd(va_arg(arg, int), 1);
-	return (1);
+	return (1);*/
+	t_flag	flag;
+	
+	flag = initflag();
+	getflag1(&flag, s);
+	getflag2(&flag, s, arg);
+	printflag(&flag);
+	printf("\n");
+	
+	return (0);
 }
 
 int	ft_printf(const char *s, ...)
@@ -50,7 +61,7 @@ int	ft_printf(const char *s, ...)
 	{
 		if (*s == '%' && s++)
 		{
-			count += ft_gsd(s, arg);
+			count += ft_gsd((char *)s, arg);
 			while (*s && ! ft_isarg(*s) && s++); // Je vais jusqu'au prochain arg
 		}
 		else
@@ -64,15 +75,17 @@ int	ft_printf(const char *s, ...)
 	return (count);
 }
 
-#include <stdio.h>
 int main(void)
 {
-	printf("return : %d\n",ft_printf("ma chaine % 8d continue %sEOF\n", 9, 1));
-	printf("return : %d\n",ft_printf("ma\n"));
-	printf("return : %d\n",ft_printf("ma%d\n", 3));
-	printf("return : %d\n",ft_printf("ma%d\n", 32));
-	printf("return : %d\n",ft_printf("ma chaine %%"));
-	printf("return : %d\n",ft_printf("ma chaine %Z", 9));
-	printf("return : %d\n",printf("ma chaine %Z", 9));
+	printf("return : %d\n",ft_printf("ma chaine %#+ -0.29X continueEOF\n", 8));
+	printf("return : %d\n",ft_printf("ma chaine %#+ -08.29X continueEOF\n", 8));
+	printf("return : %d\n",ft_printf("ma chaine %#+ -08.X continueEOF\n", 8));
+	printf("return : %d\n",ft_printf("ma chaine %#+ -.X continueEOF\n", 8));
+	//printf("return : %d\n",ft_printf("ma\n"));
+	//printf("return : %d\n",ft_printf("ma%d\n", 3));
+	//printf("return : %d\n",ft_printf("ma%d\n", 32));
+	//printf("return : %d\n",ft_printf("ma chaine %%"));
+	//printf("return : %d\n",ft_printf("ma chaine %Z", 9));
+	//printf("return : %d\n",printf("ma chaine %Z", 9));
 	return (0);
 }
