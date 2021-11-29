@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:07:50 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/29 16:36:59 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:41:32 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,13 @@ int	ft_isarg(char c)
 
 int	ft_gsd(char *s, va_list arg)
 {
-	/* substr de s jusqu'a fin arg qu'on envoie a la bonne fx. Penser a free*/
-	/* Penser a ce que la fx return le nombre de char ecrits !*/
-
-	/*while (*s && !ft_isarg(*s) && s++);
-	if (*s && *s == 'd')
-		ft_putnbr_fd(va_arg(arg, int), 1);
-	return (1);*/
 	t_flag	flag;
 	
 	flag = initflag();
 	getflag1(&flag, s);
 	getflag2(&flag, s, arg);
+	cleanflag(&flag);
+	createstr(&flag);
 	printflag(&flag);
 	printf("\n");
 	
@@ -77,10 +72,10 @@ int	ft_printf(const char *s, ...)
 
 int main(void)
 {
-	printf("return : %d\n",ft_printf("ma chaine %#+ -0.29X continueEOF\n", 8));
-	printf("return : %d\n",ft_printf("ma chaine %#+ -08.29X continueEOF\n", 8));
-	printf("return : %d\n",ft_printf("ma chaine %#+ -08.X continueEOF\n", 8));
-	printf("return : %d\n",ft_printf("ma chaine %#+ -.X continueEOF\n", 8));
+	printf("return : %d\n",ft_printf("ma chaine %#+ -0.29X continue%sEOF\n", 8, "LOL"));
+	//printf("return : %d\n",ft_printf("ma chaine %#+ -08.29X continueEOF\n", 8));
+	//printf("return : %d\n",ft_printf("ma chaine %#+ -08.X continueEOF\n", 8));
+	//printf("return : %d\n",ft_printf("ma chaine %#+ -.X continueEOF\n", 8));
 	//printf("return : %d\n",ft_printf("ma\n"));
 	//printf("return : %d\n",ft_printf("ma%d\n", 3));
 	//printf("return : %d\n",ft_printf("ma%d\n", 32));

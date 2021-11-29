@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/29 16:39:39 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/29 18:41:29 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	getflag2(t_flag *flag, char *s, va_list arg)
 		i++;
 	}
 	if(flag->conv != 's')
-		flag->arg = va_arg(arg, unsigned long long);
+		flag->arg = va_arg(arg, long long);
 	else
 		flag->str = va_arg(arg, char *);
 }
@@ -131,6 +131,19 @@ void	printflag(t_flag *flag)
 	printf("arg : %lld\n", flag->arg);
 }
 	
-//void	cleanflag(t_flag *flag)  pour gerer les priorites
+void	cleanflag(t_flag *flag)
+{
+	if (flag->dash == 1 && flag->zero == 1)
+		flag->zero = 0;
+	if (flag->dot == 1 && flag->zero == 1)
+		flag->zero = 0;
+	if (flag->plus == 1 && flag->spce == 1)
+		flag->spce = 0;
+	if (flag->bang == 1 && flag->zero == 1)
+		flag->zero = 0;
+}
 
+void	createstr(t_flag *flag)
+{
+}
 //Attention gestion des - avant convertir base
