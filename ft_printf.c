@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:07:50 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/29 18:41:32 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:54:02 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ int	ft_gsd(char *s, va_list arg)
 	getflag2(&flag, s, arg);
 	cleanflag(&flag);
 	createstr(&flag);
-	printflag(&flag);
-	printf("\n");
+	ft_putstr_fd(flag.str, 1);
+	//printflag(&flag);
+	//printf("\n");
 	
-	return (0);
+	//destroy_struct TODO
+
+	return(flag.lstr);
 }
 
 int	ft_printf(const char *s, ...)
@@ -72,7 +75,8 @@ int	ft_printf(const char *s, ...)
 
 int main(void)
 {
-	printf("return : %d\n",ft_printf("ma chaine %#+ -0.29X continue%sEOF\n", 8, "LOL"));
+	printf("return : %d\n",ft_printf("ma chaine %+-8.4d continue%sEOF\n", 8, "LOL"));
+	printf("return : %d\n",printf("ma chaine %+-8.4d continue%sEOF\n", 8, "LOL"));
 	//printf("return : %d\n",ft_printf("ma chaine %#+ -08.29X continueEOF\n", 8));
 	//printf("return : %d\n",ft_printf("ma chaine %#+ -08.X continueEOF\n", 8));
 	//printf("return : %d\n",ft_printf("ma chaine %#+ -.X continueEOF\n", 8));

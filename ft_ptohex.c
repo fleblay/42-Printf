@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itohex.c                                        :+:      :+:    :+:   */
+/*   ft_ptohex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/29 17:35:51 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 10:37:44 by fle-blay         ###   ########.fr       */
+/*   Created: 2021/11/30 09:50:14 by fle-blay          #+#    #+#             */
+/*   Updated: 2021/11/30 11:05:05 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 
-static int	ft_lennbhex(unsigned long long nbr)
+static int	ft_lenptrhex(unsigned long long nbr)
 {
 	int	i;
 
@@ -23,19 +23,19 @@ static int	ft_lennbhex(unsigned long long nbr)
 		nbr /= 16;
 		i++;
 	}
-	if (i > 8)
-		i = 8;
+	if (i > 16)
+		i = 16;
 	return (i);
 }
 
-static char	*ft_createtab(unsigned long long nbr)
+static char	*ft_createtabptr(unsigned long long nbr)
 {
 	char	*tab;
 	int		len;
 
 	len = 0;
 	tab = NULL;
-	len = ft_lennbhex(nbr);
+	len = ft_lenptrhex(nbr);
 	tab = (char *)malloc((len + 1) * sizeof(char));
 	if (! tab)
 		return (NULL);
@@ -43,42 +43,28 @@ static char	*ft_createtab(unsigned long long nbr)
 	return (tab);
 }
 
-char	*ft_catchzero(void)
-{
-	char	*tab;
-
-	tab = NULL;
-	tab = (char *)malloc(2 * sizeof(char));
-	if (! tab)
-		return (NULL);
-	tab[0] = '0';
-	tab[1] = '\0';
-	return (tab);
-}
-
-char	*ft_itohex(unsigned long long n, const char *base)
+char	*ft_ptohex(void *p, const char *base)
 {
 	char				*tab;
 	unsigned long long	nbr;
 	int					i;
 
 	tab = NULL;
-	nbr = n;
+	nbr = (unsigned long long) p;
 	i = 0;
 	if (nbr == 0)
 		return (ft_catchzero());
-	tab = ft_createtab(nbr);
+	tab = ft_createtabptr(nbr);
 	if (! tab)
 		return (NULL);
-	while (nbr > 0 && i < 8)
+	while (nbr > 0 && i < 16)
 	{
-		tab[ft_lennbhex(n) - 1 - i] = base[nbr % 16];
+		tab[ft_lenptrhex((unsigned long long)p) - 1 - i] = base[nbr % 16];
 		nbr /= 16;
 		i++;
 	}
 	return (tab);
 }
-
 /*
 #include <stdio.h>
 int main()

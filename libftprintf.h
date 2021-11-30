@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:09:57 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/29 18:30:01 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 10:20:26 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ void	getflag1(t_flag *flag, char *s);
 void	getflag2(t_flag *flag, char *s, va_list arg);
 void	printflag(t_flag *flag);
 void	cleanflag(t_flag *flag);
+void	createstr(t_flag *flag);
+char	*ft_catchzero(void);
 char	*ft_itohex(unsigned long long n, const char *base);
+char	*ft_ptohex(void *p, const char *base);
 
 #endif

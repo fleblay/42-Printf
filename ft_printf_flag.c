@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/29 18:41:29 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:05:05 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,9 @@ void	cleanflag(t_flag *flag)
 
 void	createstr(t_flag *flag)
 {
+	if (flag->conv == 'd' || flag->conv == 'i')
+		flag->str = ft_itoa(flag->arg);
+	flag->lstr = ft_strlen(flag->str);
+	if (flag->conv != 's' && flag->lstr < flag->dotn)
+		
 }
-//Attention gestion des - avant convertir base
