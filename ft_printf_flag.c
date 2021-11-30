@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 11:50:46 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:35:53 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_flag	initflag(void)
 	flag.lstr = 0;
 	flag.str = NULL;
 	flag.arg = 0;
+	flag.minus = 0;
 	return (flag);
 }
 
@@ -109,8 +110,16 @@ void	getflag2(t_flag *flag, char *s, va_list arg)
 			flag->dotn = ft_atoi (s + i + 1);
 		i++;
 	}
-	if(flag->conv != 's')
-		flag->arg = va_arg(arg, long long);
-	else
+	if (flag->conv == 'p')
+		flag->arg = va_arg(arg, unsigned long long);
+	else if (flag->conv == 's')
 		flag->str = va_arg(arg, char *);
+	else
+	{
+		flag->arg = (int)va_arg(arg, long long);
+		//A investiguer ++++ !!!!
+		//printf("arg -> %lld\n", flag->arg);
+		if (flag->arg < 0)
+			flag->minus = 1;
+	}
 }

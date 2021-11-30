@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 11:47:42 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 11:52:48 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:32:41 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	printflag(t_flag *flag)
 	printf("lstr : %d\n", flag->lstr);
 	printf("str : %s\n", flag->str);
 	printf("arg : %lld\n", flag->arg);
+	printf("minus : %d\n", flag->minus);
 }
 	
 void	cleanflag(t_flag *flag)
@@ -41,6 +42,10 @@ void	cleanflag(t_flag *flag)
 		flag->spce = 0;
 	if (flag->bang == 1 && flag->zero == 1)
 		flag->zero = 0;
+	if (flag->minus == 1 && flag->spce == 1)
+		flag->spce = 0;
+	if (flag->minus == 1 && flag->plus == 1)
+		flag->plus = 0;
 }
 
 //TODO : Destroy structflag !

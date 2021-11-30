@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:09:57 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 12:13:21 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:58:53 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_flag
 	int			lstr;
 	char		*str;
 	long long	arg;
+	int			minus;
 }			t_flag;
 
 int		ft_printf(const char *s, ...);
@@ -45,5 +46,8 @@ char	*ft_catchzero(void);
 char	*dotpad(t_flag *flag);
 char	*ft_itohex(unsigned long long n, const char *base);
 char	*ft_ptohex(void *p, const char *base);
+char	*mfwpad(t_flag *flag, char padchar, int r);
+long long	valabs(long long nb);
+char	*addsign(t_flag *flag);
 
 #endif
