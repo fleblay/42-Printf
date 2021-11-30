@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 18:03:37 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 19:06:28 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,23 @@ void	createstr(t_flag *flag)
 //	printf("val %lld\n", flag->arg);
 //	printf("valabs %lld\n", valabs(flag->arg));
 	//Mettres toutes les conv de base au dessus
+	if (flag->conv == 'x')
+		flag->str = ft_itohex(flag->arg, "0123456789abcdef");
+	if (flag->conv == 'X')
+		flag->str = ft_itohex(flag->arg, "0123456789ABCDEF");
+	// Attention, si arg = 0, ne pas ajouter 0x ou 0X
+	// Ajouter 0x ou 0X uniquement si conversion !!!
 	flag->str = dotpad(flag);
 	if (!flag->zero)
 	{
-		flag->str = addsign(flag);
+		if (flag->conv != 'x' && flag->conv != 'X')
+			flag->str = addsign(flag);
 		flag->str = mfwpad(flag, ' ', 0);
 	}
 	if (flag->zero)
 	{
-		flag->str = mfwpad(flag, '0', flag->minus | flag->plus | flag->spce);
+		if (flag->conv != 'x' && flag->conv != 'X')
+			flag->str = mfwpad(flag, '0', flag->minus | flag->plus | flag->spce);
 		flag->str = addsign(flag);
 	}
 	flag->lstr = ft_strlen(flag->str);
