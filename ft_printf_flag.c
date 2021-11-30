@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 11:05:05 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/11/30 11:50:46 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,41 +113,4 @@ void	getflag2(t_flag *flag, char *s, va_list arg)
 		flag->arg = va_arg(arg, long long);
 	else
 		flag->str = va_arg(arg, char *);
-}
-
-void	printflag(t_flag *flag)
-{
-	printf("dash : %d\n", flag->dash);
-	printf("zero : %d\n", flag->zero);
-	printf("dot : %d\n", flag->dot);
-	printf("dotn : %d\n", flag->dotn);
-	printf("mfw : %d\n", flag->mfw);
-	printf("bang : %d\n", flag->bang);
-	printf("space : %d\n", flag->spce);
-	printf("plus : %d\n", flag->plus);
-	printf("conv : %c\n", flag->conv);
-	printf("lstr : %d\n", flag->lstr);
-	printf("str : %s\n", flag->str);
-	printf("arg : %lld\n", flag->arg);
-}
-	
-void	cleanflag(t_flag *flag)
-{
-	if (flag->dash == 1 && flag->zero == 1)
-		flag->zero = 0;
-	if (flag->dot == 1 && flag->zero == 1)
-		flag->zero = 0;
-	if (flag->plus == 1 && flag->spce == 1)
-		flag->spce = 0;
-	if (flag->bang == 1 && flag->zero == 1)
-		flag->zero = 0;
-}
-
-void	createstr(t_flag *flag)
-{
-	if (flag->conv == 'd' || flag->conv == 'i')
-		flag->str = ft_itoa(flag->arg);
-	flag->lstr = ft_strlen(flag->str);
-	if (flag->conv != 's' && flag->lstr < flag->dotn)
-		
 }
