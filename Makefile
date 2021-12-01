@@ -13,7 +13,7 @@ SRCS = ${addprefix ${SRCS_DIR}, ${SRCS_LIST}}
 
 OBJS = ${SRCS:.c=.o}
 
-HEADER_DIR = includes
+HEADER_DIR = includes/
 
 LIBFT_DIR = libft/
 LIBFT_NAME = libft.a
@@ -29,10 +29,11 @@ all : ${NAME}
 
 ${NAME} : ${OBJS}
 	make -C ${LIBFT_DIR}
+	cp ${LIBFT} ./${NAME}
 	ar -rc ${NAME} ${OBJS} ${LIBFT}
-
+	
 %.o : %.c ${HEADER}
-	${CC} ${CFLAGS} -c $< -o $@ -I ${HEADER_DIR}
+	${CC} ${CFLAGS} -c $< -I ${HEADER_DIR} -o $@ 
 
 bonus : ${NAME}
 

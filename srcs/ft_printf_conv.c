@@ -6,12 +6,12 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 15:37:31 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:13:11 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 long long	valabs(long long nb)
 {
@@ -35,6 +35,8 @@ void	createstr(t_flag *flag)
 	if (flag->conv == 's' || flag->conv == 'c')
 		conv_str(flag);
 	flag->lstr = ft_strlen(flag->str);
+	//if (flag->conv == 'c' && flag->arg == 0)
+	//	flag->lstr++;
 }
 
 void	conv_di(t_flag *flag)

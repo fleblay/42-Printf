@@ -6,12 +6,12 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:43:48 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 15:57:59 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 17:47:29 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	conv_str(t_flag *flag)
 {

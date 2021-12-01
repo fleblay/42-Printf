@@ -6,12 +6,12 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:07:50 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 15:59:40 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 19:33:23 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 
 int	ft_isarg(char c)
@@ -40,6 +40,12 @@ int	ft_gsd(char *s, va_list arg)
 	getflag2(&flag, s, arg);
 	cleanflag(&flag);
 	createstr(&flag);
+	//check non printable ???
+	if (flag.arg == 0 && flag.conv == 'c')
+	{
+		write(1, &(flag.arg), 1);
+		flag.lstr++;
+	}
 	ft_putstr_fd(flag.str, 1);
 	if (flag.str)
 		free(flag.str);

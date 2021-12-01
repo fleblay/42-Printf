@@ -6,12 +6,12 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:36:13 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 15:49:00 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 17:47:29 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 char	*mfwpad(t_flag *flag, char padchar, int r)
 {
