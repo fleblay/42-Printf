@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:09:57 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 17:58:53 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 10:19:11 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ char	*ft_ptohex(void *p, const char *base);
 char	*mfwpad(t_flag *flag, char padchar, int r);
 long long	valabs(long long nb);
 char	*addsign(t_flag *flag);
+void	conv_di(t_flag *flag);
+void	conv_xX(t_flag *flag);
+char	*addprefix(t_flag *flag);
+void	conv_bang(t_flag *flag);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:07:50 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 18:38:14 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 10:52:44 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	ft_printf(const char *s, ...)
 
 int main(void)
 {
-	/*printf("1return : %d\n",ft_printf("ma chaine % 12d continue%sEOF\n", 0, "LOL"));
+	printf("1return : %d\n",ft_printf("ma chaine % 12d continue%sEOF\n", 0, "LOL"));
 	printf("2return : %d\n",printf("ma chaine % 12d continue%sEOF\n", 0, "LOL"));
 	printf("3return : %d\n",ft_printf("ma chaine %+12d continue%sEOF\n", 88, "LOL"));
 	printf("4return : %d\n",printf("ma chaine %+12d continue%sEOF\n", 88, "LOL"));
@@ -95,7 +95,7 @@ int main(void)
 	printf("16return : %d\n",printf("ma chaine %12.4d continue%sEOF\n", -88, "LOL"));
 	printf("17return : %d\n",ft_printf("ma chaine %+05d continue%sEOF\n", 88, "LOL"));
 	printf("18return : %d\n",printf("ma chaine %+05d continue%sEOF\n", 88, "LOL"));
-	*/
+	
 	printf("19return : %d\n",ft_printf("ma chaine %#08.29X continueEOF\n", 8));
 	printf("20return : %d\n",printf("ma chaine %#08.29X continueEOF\n", 8));
 	printf("19bisreturn : %d\n",ft_printf("ma chaine %#08.29x continueEOF\n", 8));
@@ -104,6 +104,12 @@ int main(void)
 	printf("20ter : %d\n",printf("ma chaine %#08.29x continueEOF\n", -8));
 	printf("21return : %d\n",ft_printf("ma chaine %#08.X continueEOF\n", 8));
 	printf("22return : %d\n",printf("ma chaine %#08.X continueEOF\n", 8));
+	printf("21return : %d\n",ft_printf("ma chaine %#8.X continueEOF\n", 8));
+	printf("22return : %d\n",printf("ma chaine %#8.X continueEOF\n", 8));
+	printf("21return : %d\n",ft_printf("ma chaine %#8X continueEOF\n", 8));
+	printf("22return : %d\n",printf("ma chaine %#8X continueEOF\n", 8));
+	printf("21bisreturn : %d\n",ft_printf("ma chaine %08.X continueEOF\n", 8));
+	printf("22bisreturn : %d\n",printf("ma chaine %08.X continueEOF\n", 8));
 	printf("23return : %d\n",ft_printf("ma chaine %#-.X continueEOF\n", 8));
 	printf("24return : %d\n",printf("ma chaine %#-.X continueEOF\n", 8));
 	/*printf("25return : %d\n",ft_printf("ma chaine %%"));
