@@ -6,15 +6,13 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 12:59:58 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:26:00 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "libft.h"
 #include <stdarg.h>
-
-#include <stdio.h>
 
 t_flag	initflag(void)
 {
@@ -48,7 +46,7 @@ int	posnxtflag(char *str)
 	return (i);
 }
 
-int isnamong(char *str, char c, int len)
+int	isnamong(char *str, char c, int len)
 {
 	int	i;
 
@@ -66,11 +64,11 @@ int isnamong(char *str, char c, int len)
 
 void	getflag1(t_flag *flag, char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (! flag || ! s)
-		return;
+		return ;
 	while (i < posnxtflag(s) && s[i])
 	{
 		if (s[i] == '-')
@@ -93,6 +91,36 @@ void	getflag1(t_flag *flag, char *s)
 	flag->conv = s[i];
 }
 
+void	getflag2(t_flag *flag, char *s, va_list arg)
+{
+	int	i;
+
+	i = 0;
+	if (! flag || ! s)
+		return ;
+	while (i < posnxtflag(s) && s[i])
+	{
+		if (ft_isdigit(s[i]) && s[i] != '0' && flag->mfw == 0
+			&& !isnamong(s, '.', i))
+			flag->mfw = ft_atoi(s + i);
+		if (s[i] == '.' && i + 1 < posnxtflag(s) && ft_isdigit(s[i + 1])
+			&& s[i + 1] != '0')
+			flag->dotn = ft_atoi (s + i + 1);
+		i++;
+	}
+	if (flag->conv == 'p')
+		flag->arg = va_arg(arg, unsigned long long);
+	else if (flag->conv == 's')
+		flag->str = ft_strdup(va_arg(arg, char *));
+	else
+	{
+		flag->arg = (int)va_arg(arg, long long);
+		if (flag->arg < 0)
+			flag->minus = 1;
+	}
+}
+
+/*
 void	getflag2(t_flag *flag, char *s, va_list arg)
 {
 	int i;
@@ -125,3 +153,4 @@ void	getflag2(t_flag *flag, char *s, va_list arg)
 			flag->minus = 1;
 	}
 }
+*/

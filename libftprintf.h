@@ -6,14 +6,14 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:09:57 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 12:39:30 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:38:41 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-#include <stdarg.h>
+# include <stdarg.h>
 
 typedef struct s_flag
 {
@@ -32,30 +32,30 @@ typedef struct s_flag
 	int			minus;
 }			t_flag;
 
-int		ft_printf(const char *s, ...);
-int		ft_isarg(char c);
-t_flag	initflag(void);
-int		posnxtflag(char *str);
-int		isnamong(char *str, char c, int len);
-void	getflag1(t_flag *flag, char *s);
-void	getflag2(t_flag *flag, char *s, va_list arg);
-void	printflag(t_flag *flag);
-void	cleanflag(t_flag *flag);
-void	createstr(t_flag *flag);
-char	*ft_catchzero(void);
-char	*dotpad(t_flag *flag);
-char	*ft_itohex(unsigned long long n, const char *base);
-char	*ft_ptohex(void *p, const char *base);
-char	*mfwpad(t_flag *flag, char padchar, int r);
+int			ft_printf(const char *s, ...);
+int			ft_isarg(char c);
+t_flag		initflag(void);
+int			posnxtflag(char *str);
+int			isnamong(char *str, char c, int len);
+void		getflag1(t_flag *flag, char *s);
+void		getflag2(t_flag *flag, char *s, va_list arg);
+void		printflag(t_flag *flag);
+void		cleanflag(t_flag *flag);
+void		createstr(t_flag *flag);
+char		*ft_catchzero(void);
+char		*dotpad(t_flag *flag);
+char		*ft_itohex(unsigned long long n, const char *base);
+char		*ft_ptohex(void *p, const char *base);
+char		*mfwpad(t_flag *flag, char padchar, int r);
 long long	valabs(long long nb);
-char	*addsign(t_flag *flag);
-void	conv_di(t_flag *flag);
-void	conv_xX(t_flag *flag);
-char	*addprefix(t_flag *flag);
-void	conv_bang(t_flag *flag);
-char	*conv_percent(t_flag *flag);
-void	conv_pt(t_flag *flag);
-void	conv_str(t_flag *flag);
-char	*chartostr(char c);
+char		*addsign(t_flag *flag);
+void		conv_di(t_flag *flag);
+void		conv_xX(t_flag *flag);
+char		*addprefix(t_flag *flag);
+void		conv_bang(t_flag *flag);
+char		*conv_percent(t_flag *flag);
+void		conv_pt(t_flag *flag);
+void		conv_str(t_flag *flag);
+char		*chartostr(char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 11:47:42 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 12:45:56 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 14:28:16 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdarg.h>
 
-#include <stdio.h>
+/*
 void	printflag(t_flag *flag)
 {
 	printf("dash : %d\n", flag->dash);
@@ -31,7 +31,8 @@ void	printflag(t_flag *flag)
 	printf("arg : %lld\n", flag->arg);
 	printf("minus : %d\n", flag->minus);
 }
-	
+*/
+
 void	cleanflag(t_flag *flag)
 {
 	if (flag->dash == 1 && flag->zero == 1)
@@ -50,13 +51,13 @@ void	cleanflag(t_flag *flag)
 
 char	*chartostr(char c)
 {
-	char *tmp = NULL;
+	char	*tmp;
 
+	tmp = NULL;
 	tmp = ft_strdup("a");
 	if (tmp)
 		tmp[0] = c;
 	return (tmp);
 }
-	
 
 //TODO : Destroy structflag !
