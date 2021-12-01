@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 11:12:05 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 12:59:58 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,22 @@ long long	valabs(long long nb)
 
 void	createstr(t_flag *flag)
 {
-	if (flag->conv == 'd' || flag->conv == 'i')
+	if  (flag->conv == 'd' || flag->conv == 'i' || flag->conv == 'u')
 		conv_di(flag);
-	if (flag->bang && (flag->conv == 'x' || flag->conv == 'X'))
+	if (flag->conv == 'x' || flag->conv == 'X')
+		conv_bang(flag);
+	if (flag->conv == '%')
+		flag->str = conv_percent(flag);
+	if (flag->conv == 'p')
+		conv_pt(flag);
+	if (flag->conv == 'c')
+		flag->str = chartostr(flag->arg);
+	if (flag->conv == 's' || flag->conv == 'c')
+		conv_str(flag);
+	/*if (flag->bang && (flag->conv == 'x' || flag->conv == 'X'))
 		conv_bang(flag);
 	if (!flag->bang && (flag->conv == 'x' || flag->conv == 'X'))
-		conv_bang(flag);
+		conv_bang(flag);*/
 	flag->lstr = ft_strlen(flag->str);
 }
 
@@ -101,13 +111,41 @@ void	conv_bang(t_flag *flag)
 		flag->str = mfwpad(flag, ' ', 0);
 	flag->lstr = ft_strlen(flag->str);
 }
+
+void	conv_pt(t_flag *flag)
+{
+	flag->str = ft_ptohex((void*)flag->arg, "0123456789abcdef");
+	flag->str = dotpad(flag);
+	if (flag->dot && flag->dotn != 0)
+		flag->str = mfwpad(flag, ' ', 0);
+	flag->str = addprefix(flag);
+	if (flag->dotn == 0 || !flag->dot)
+		flag->str = mfwpad(flag, ' ', 0);
+	flag->lstr = ft_strlen(flag->str);
+}
+
+void	conv_str(t_flag *flag)
+{
+	if (flag->dot)
+		flag->str = ft_substr(flag->str, 0, flag->dotn);
+	flag->str = mfwpad(flag, ' ', 0);
+	return;
+}
+
+char	*conv_percent(t_flag *flag)
+{
+	flag->str = ft_strdup("%");
+	flag->lstr += 1;
+	return (flag->str);
+}
+
 char	*addprefix(t_flag *flag)
 {
 	char	*tmp;
 
 	tmp = NULL;
 	flag->lstr = ft_strlen(flag->str);
-	if (flag->conv == 'x' && flag->arg != 0)
+	if ((flag->conv == 'x' && flag->arg != 0) || flag->conv == 'p')
 	{
 		tmp = ft_strjoin("0x", flag->str);
 		if (!tmp)
@@ -125,7 +163,6 @@ char	*addprefix(t_flag *flag)
 	}
 	return (flag->str);
 }
-
 
 char	*dotpad(t_flag *flag)
 {

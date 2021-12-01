@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:09:57 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 10:19:11 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 12:39:30 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,9 @@ void	conv_di(t_flag *flag);
 void	conv_xX(t_flag *flag);
 char	*addprefix(t_flag *flag);
 void	conv_bang(t_flag *flag);
+char	*conv_percent(t_flag *flag);
+void	conv_pt(t_flag *flag);
+void	conv_str(t_flag *flag);
+char	*chartostr(char c);
 
 #endif

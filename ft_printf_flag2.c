@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 11:47:42 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/11/30 17:32:41 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/01 12:45:56 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,16 @@ void	cleanflag(t_flag *flag)
 	if (flag->minus == 1 && flag->plus == 1)
 		flag->plus = 0;
 }
+
+char	*chartostr(char c)
+{
+	char *tmp = NULL;
+
+	tmp = ft_strdup("a");
+	if (tmp)
+		tmp[0] = c;
+	return (tmp);
+}
+	
 
 //TODO : Destroy structflag !
