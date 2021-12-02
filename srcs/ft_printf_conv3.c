@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:36:13 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 18:03:43 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:48:03 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,13 @@ void	conv_u(t_flag *flag)
 	//printf("argb : %u\n", (unsigned int)flag->arg);
 	//printf("argbis : %u\n", (unsigned int)(valabs(flag->arg)));
 	flag->str = ft_uitoa(flag->arg);
+	if (flag->dotn == 0 && flag->arg == 0)
+	{
+		free(flag->str);
+		flag->str = ft_strdup("");
+		if (!flag->str)
+			return ;
+	}
 	//flag->str = ft_itoa(valabs(flag->arg));
 	//printf("argc : %s\n", flag->str);
 	flag->str = dotpad(flag);

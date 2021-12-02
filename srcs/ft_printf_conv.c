@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 18:05:25 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:48:03 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void	conv_di(t_flag *flag)
 	//ft_printf("init str :%s\n", flag->str);
 	//flag->str = ft_itoa(valabs(flag->arg)); TO CHECK OVERFLOW SUR INTMIN
 	flag->str = ft_ltoa(valabs(flag->arg));
+	if (flag->dotn == 0 && flag->arg == 0)
+	{
+		free(flag->str);
+		flag->str = ft_strdup("");
+		if (!flag->str)
+			return ;
+	}
 	//ft_printf("ici0 str :%s\n", flag->str);
 	flag->str = dotpad(flag);
 	if (!flag->zero)
@@ -81,6 +88,13 @@ void	conv_bang(t_flag *flag)
 		flag->str = ft_itohex(flag->arg, "0123456789abcdef");
 	if (flag->conv == 'X')
 		flag->str = ft_itohex(flag->arg, "0123456789ABCDEF");
+	if (flag->dotn == 0 && flag->arg == 0)
+	{
+		free(flag->str);
+		flag->str = ft_strdup("");
+		if (!flag->str)
+			return ;
+	}
 	flag->str = dotpad(flag);
 	if (flag->dot && flag->dotn != 0)
 	{

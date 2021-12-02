@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:36:30 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 17:34:02 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:50:58 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,20 @@ int main(void)
 	*/
 	//printf("%014d\n", (int)-2147483647);
 	//ft_printf("%014d\n", (int)-2147483647);
-	printf("%014d\n", (int)-2147483648);
-	ft_printf("%014d\n", (int)-2147483648);
+	//printf("%014d\n", (int)-2147483648);
+	//ft_printf("%014d\n", (int)-2147483648);
+	//ft_printf("%d\n", 0);
+	//printf("%d\n", 0);
+	//ft_printf("%.1d\n", 0);
+	//printf("%.1d\n", 0);
+	//ft_printf("%d\n", 0);
+	//printf("%d\n", 0);
+	ft_printf("%.0d\n", 0);
+	printf("%.0d\n", 0);
+	//ft_printf("%8.0d\n", 0);
+	//printf("%8.0d\n", 0);
+	//ft_printf("%.0d\n", 9);
+	//printf("%.0d\n", 9);
 
 	return (0);
 }
