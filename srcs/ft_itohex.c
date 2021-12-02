@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:35:51 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 17:47:29 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:33:09 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*ft_createtab(unsigned long long nbr)
 	return (tab);
 }
 
-char	*ft_catchzero(void)
+char	*ft_catchz(void)
 {
 	char	*tab;
 
@@ -66,7 +66,7 @@ char	*ft_itohex(unsigned long long n, const char *base)
 	nbr = n;
 	i = 0;
 	if (nbr == 0)
-		return (ft_catchzero());
+		return (ft_catchz());
 	tab = ft_createtab(nbr);
 	if (! tab)
 		return (NULL);

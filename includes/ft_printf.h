@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:43:46 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 18:07:44 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:30:39 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ t_flag		initflag(void);
 int			posnxtflag(char *str);
 int			isnamong(char *str, char c, int len);
 void		getflag1(t_flag *flag, char *s);
-void		getflag2(t_flag *flag, char *s, va_list arg);
+void		getflag2(t_flag *flag, char *s);
 void		printflag(t_flag *flag);
 void		cleanflag(t_flag *flag);
 void		createstr(t_flag *flag);
-char		*ft_catchzero(void);
+char		*ft_catchz(void);
 char		*dotpad(t_flag *flag);
 char		*ft_itohex(unsigned long long n, const char *base);
 char		*ft_ptohex(void *p, const char *base);
@@ -57,5 +57,10 @@ char		*conv_percent(t_flag *flag);
 void		conv_pt(t_flag *flag);
 void		conv_str(t_flag *flag);
 char		*chartostr(char c);
+void		conv_zerochar(t_flag *flag);
+void		ft_putnstrzero_fd(char *s, int fd, int size);
+void		getarg(t_flag *flag, va_list arg);
+void		conv_u(t_flag *flag);
+char		*ft_uitoa(unsigned int n);
 
 #endif

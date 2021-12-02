@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 17:47:29 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 10:17:37 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	getflag1(t_flag *flag, char *s)
 	flag->conv = s[i];
 }
 
-void	getflag2(t_flag *flag, char *s, va_list arg)
+void	getflag2(t_flag *flag, char *s)
 {
 	int	i;
 
@@ -107,16 +107,6 @@ void	getflag2(t_flag *flag, char *s, va_list arg)
 			&& s[i + 1] != '0')
 			flag->dotn = ft_atoi (s + i + 1);
 		i++;
-	}
-	if (flag->conv == 'p')
-		flag->arg = va_arg(arg, unsigned long long);
-	else if (flag->conv == 's')
-		flag->str = ft_strdup(va_arg(arg, char *));
-	else
-	{
-		flag->arg = (int)va_arg(arg, long long);
-		if (flag->arg < 0)
-			flag->minus = 1;
 	}
 }
 

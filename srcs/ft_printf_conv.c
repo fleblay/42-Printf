@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 19:13:11 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:40:44 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ long long	valabs(long long nb)
 
 void	createstr(t_flag *flag)
 {
-	if (flag->conv == 'd' || flag->conv == 'i' || flag->conv == 'u')
+	if (flag->conv == 'd' || flag->conv == 'i')
 		conv_di(flag);
+	if (flag->conv == 'u')
+		conv_u(flag);
 	if (flag->conv == 'x' || flag->conv == 'X')
 		conv_bang(flag);
 	if (flag->conv == '%')
@@ -32,11 +34,11 @@ void	createstr(t_flag *flag)
 		conv_pt(flag);
 	if (flag->conv == 'c')
 		flag->str = chartostr(flag->arg);
+	if (flag->conv == 'c' && flag->arg == 0)
+		conv_zerochar(flag);
 	if (flag->conv == 's' || flag->conv == 'c')
 		conv_str(flag);
 	flag->lstr = ft_strlen(flag->str);
-	//if (flag->conv == 'c' && flag->arg == 0)
-	//	flag->lstr++;
 }
 
 void	conv_di(t_flag *flag)

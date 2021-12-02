@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 09:50:14 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 17:47:29 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:29:48 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	*ft_ptohex(void *p, const char *base)
 	nbr = (unsigned long long) p;
 	i = 0;
 	if (nbr == 0)
-		return (ft_catchzero());
+		return (ft_catchz());
 	tab = ft_createtabptr(nbr);
 	if (! tab)
 		return (NULL);

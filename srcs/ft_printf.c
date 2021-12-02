@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:07:50 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 19:33:23 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:52:33 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,20 @@ int	ft_gsd(char *s, va_list arg)
 
 	flag = initflag();
 	getflag1(&flag, s);
-	getflag2(&flag, s, arg);
+	getflag2(&flag, s);
+	getarg(&flag, arg);
 	cleanflag(&flag);
 	createstr(&flag);
 	//check non printable ???
-	if (flag.arg == 0 && flag.conv == 'c')
-	{
-		write(1, &(flag.arg), 1);
-		flag.lstr++;
-	}
-	ft_putstr_fd(flag.str, 1);
+	if (flag.conv == 'c' && flag.arg == 0)
+		ft_putnstrzero_fd(flag.str, 1, flag.lstr);
+	else
+		ft_putstr_fd(flag.str, 1);
 	if (flag.str)
+	{
 		free(flag.str);
+		flag.str = NULL;
+	}
 	return (flag.lstr);
 }
 

@@ -6,13 +6,15 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 11:47:42 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 17:47:29 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 13:11:23 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 #include <stdarg.h>
+
+#include <stdio.h>
 
 /*
 void	printflag(t_flag *flag)
@@ -32,6 +34,34 @@ void	printflag(t_flag *flag)
 	printf("minus : %d\n", flag->minus);
 }
 */
+
+void	getarg(t_flag *flag, va_list arg)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if (flag->conv == 'p')
+		flag->arg = va_arg(arg, unsigned long long);
+	else if (flag->conv == 'u')
+		{
+		flag->arg = va_arg(arg, unsigned int);
+		//printf("arga : %u\n", (unsigned int)flag->arg);
+		}
+	else if (flag->conv == 's')
+	{
+		tmp = va_arg(arg, char *);
+		if (tmp)
+			flag->str = ft_strdup(tmp);
+		else
+			flag->str = ft_strdup("(null)");
+	}
+	else if(flag->conv != '%')
+	{
+		flag->arg = (int)va_arg(arg, long long);
+		if (flag->arg < 0)
+			flag->minus = 1;
+	}
+}
 
 void	cleanflag(t_flag *flag)
 {

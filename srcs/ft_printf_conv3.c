@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:36:13 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/01 17:47:29 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 12:32:29 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,46 @@ char	*mfwpad(t_flag *flag, char padchar, int r)
 		flag->str = ret;
 	}
 	return (flag->str);
+}
+void	conv_zerochar(t_flag *flag)
+{
+	flag->str[0] = 9;
+	flag->str = mfwpad(flag, ' ', 0);
+}
+
+void	ft_putnstrzero_fd(char *s, int fd, int size)
+{
+	int	i;
+
+	i = 0;
+	if (! s)
+		return ;
+	while (i < size)
+	{
+		if (s[i] == 9)
+			s[i] = 0;
+		write(fd, s + i, 1);
+		i++;
+	}
+}
+
+void	conv_u(t_flag *flag)
+{
+	//printf("argb : %u\n", (unsigned int)flag->arg);
+	//printf("argbis : %u\n", (unsigned int)(valabs(flag->arg)));
+	flag->str = ft_uitoa(flag->arg);
+	//flag->str = ft_itoa(valabs(flag->arg));
+	//printf("argc : %s\n", flag->str);
+	flag->str = dotpad(flag);
+	if (!flag->zero)
+	{
+		flag->str = addsign(flag);
+		flag->str = mfwpad(flag, ' ', 0);
+	}
+	if (flag->zero)
+	{
+		flag->str = mfwpad(flag, '0', flag->minus | flag->plus | flag->spce);
+		flag->str = addsign(flag);
+	}
+	flag->lstr = ft_strlen(flag->str);
 }

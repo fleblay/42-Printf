@@ -6,6 +6,7 @@ ft_printf_conv3.c\
 ft_printf_flag.c\
 ft_printf_flag2.c\
 ft_ptohex.c\
+ft_uitoa.c
 
 SRCS_DIR = srcs/
 
