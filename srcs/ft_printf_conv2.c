@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:43:48 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 11:14:31 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:13:51 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	*addsign(t_flag *flag)
 
 	tmp = NULL;
 	flag->lstr = ft_strlen(flag->str);
-	if (flag->minus && flag->arg != -2147483648)
+	if (flag->minus /*&& flag->arg != -2147483648*/)
 	{
 		tmp = ft_strjoin("-", flag->str);
 		if (!tmp)

@@ -6,15 +6,21 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 15:02:13 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:05:25 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
+//WARNING !!!!
+#include <stdio.h>
+
 long long	valabs(long long nb)
 {
+	//printf("nb :%lld\n", nb);
+	//printf("-nb :%lld\n", -nb);
+	//printf("(int)-nb :%d\n", (int)-nb);
 	if (nb < 0)
 		return (-nb);
 	return (nb);
@@ -22,7 +28,11 @@ long long	valabs(long long nb)
 
 void	createstr(t_flag *flag)
 {
-	if (flag->conv == 'd' || flag->conv == 'i')
+	if ((flag->conv == 'd' || flag->conv == 'i')
+			&& flag->arg != -2147483648)
+		conv_di(flag);
+	if ((flag->conv == 'd' || flag->conv == 'i')
+			&& flag->arg == -2147483648)
 		conv_di(flag);
 	if (flag->conv == 'u')
 		conv_u(flag);
@@ -43,17 +53,24 @@ void	createstr(t_flag *flag)
 
 void	conv_di(t_flag *flag)
 {
-	flag->str = ft_itoa(valabs(flag->arg));
+	//ft_printf("init str :%s\n", flag->str);
+	//flag->str = ft_itoa(valabs(flag->arg)); TO CHECK OVERFLOW SUR INTMIN
+	flag->str = ft_ltoa(valabs(flag->arg));
+	//ft_printf("ici0 str :%s\n", flag->str);
 	flag->str = dotpad(flag);
 	if (!flag->zero)
 	{
+	//	ft_printf("ici1 str :%s\n", flag->str);
 		flag->str = addsign(flag);
 		flag->str = mfwpad(flag, ' ', 0);
 	}
 	if (flag->zero)
 	{
+	//	ft_printf("ici2 str :%s\n", flag->str);
 		flag->str = mfwpad(flag, '0', flag->minus | flag->plus | flag->spce);
+	//	ft_printf("ici3 str :%s\n", flag->str);
 		flag->str = addsign(flag);
+	//	ft_printf("ici4 str :%s\n", flag->str);
 	}
 	flag->lstr = ft_strlen(flag->str);
 }

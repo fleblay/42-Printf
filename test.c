@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:36:30 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 15:09:40 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:34:02 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,24 @@ int main(void)
 	//ft_printf("%%%c", 'A');
 	//printf("%d\n", ft_printf("%u\n", -1));	
 	//printf("%d\n", -2147483648);	
-	ft_printf("%04x", 9);
-	printf("\n");
-	printf("%04x", 9);
+	//ft_printf("%04x", 9);
+	//printf("\n");
+	//printf("%04x", 9);
+	//ft_printf("%10d\n", 42);
+	//printf("%10d\n", 42);
+	
+	/*
+	ft_printf("%.13d\n", -2147);
+	printf("%.13d\n", -2147);
+	ft_printf("%.13d\n", (int)-2147483647);
+	printf("%.13d\n", (int)-2147483647);
+	ft_printf("%.13d\n", (int)-2147483648);
+	printf("%.13d\n", (int)-2147483648);
+	*/
+	//printf("%014d\n", (int)-2147483647);
+	//ft_printf("%014d\n", (int)-2147483647);
+	printf("%014d\n", (int)-2147483648);
+	ft_printf("%014d\n", (int)-2147483648);
 
 	return (0);
 }
