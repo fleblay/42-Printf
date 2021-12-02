@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 12:40:44 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:02:13 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,40 @@ void	conv_bang(t_flag *flag)
 		flag->str = ft_itohex(flag->arg, "0123456789ABCDEF");
 	flag->str = dotpad(flag);
 	if (flag->dot && flag->dotn != 0)
+	{
+		//ft_printf("ici\n");
+		flag->str = mfwpad(flag, ' ', 0);
+	}
+	if (flag->bang)
+		flag->str = addprefix(flag);
+	if (!flag->zero && (flag->dotn == 0 || !flag->dot))
+	{
+		//ft_printf("la\n");
+		flag->str = mfwpad(flag, ' ', 0);
+	}
+	if (flag->zero)
+	{
+		//ft_printf("labas\n");
+		flag->str = mfwpad(flag, '0', 0);
+	}
+	flag->lstr = ft_strlen(flag->str);
+}
+
+/*void	conv_bang(t_flag *flag)
+{
+	if (flag->conv == 'x')
+		flag->str = ft_itohex(flag->arg, "0123456789abcdef");
+	if (flag->conv == 'X')
+		flag->str = ft_itohex(flag->arg, "0123456789ABCDEF");
+	flag->str = dotpad(flag);
+	if (flag->dot && flag->dotn != 0)
 		flag->str = mfwpad(flag, ' ', 0);
 	if (flag->bang)
 		flag->str = addprefix(flag);
 	if (flag->dotn == 0 || !flag->dot)
 		flag->str = mfwpad(flag, ' ', 0);
 	flag->lstr = ft_strlen(flag->str);
-}
+}*/
 
 void	conv_pt(t_flag *flag)
 {
