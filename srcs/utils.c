@@ -6,11 +6,10 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 09:52:36 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 10:46:05 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:32:58 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include <unistd.h>
 
 int	ft_isarg(char c)
@@ -27,6 +26,7 @@ int	ft_isarg(char c)
 	}
 	return (0);
 }
+
 int	posnxtflag(char *str)
 {
 	int	i;

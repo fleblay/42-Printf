@@ -6,35 +6,14 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 10:24:30 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:31:07 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-void	createstr(t_flag *flag)
-{
-	if (flag->conv == 'd' || flag->conv == 'i')
-		conv_di(flag);
-	if (flag->conv == 'u')
-		conv_u(flag);
-	if (flag->conv == 'x' || flag->conv == 'X')
-		conv_bang(flag);
-	if (flag->conv == '%')
-		flag->str = conv_percent(flag);
-	if (flag->conv == 'p')
-		conv_pt(flag);
-	if (flag->conv == 'c')
-		flag->str = chartostr(flag->arg);
-	if (flag->conv == 'c' && flag->arg == 0)
-		conv_zerochar(flag);
-	if (flag->conv == 's' || flag->conv == 'c')
-		conv_str(flag);
-	flag->lstr = ft_strlen(flag->str);
-}
-
-void	conv_di(t_flag *flag)
+static void	conv_di(t_flag *flag)
 {
 	flag->str = ft_ltoa(valabs(flag->arg));
 	if (flag->dotn == 0 && flag->arg == 0)
@@ -58,7 +37,7 @@ void	conv_di(t_flag *flag)
 	flag->lstr = ft_strlen(flag->str);
 }
 
-void	conv_bang(t_flag *flag)
+static void	conv_bang(t_flag *flag)
 {
 	if (flag->conv == 'x')
 		flag->str = ft_itohex(flag->arg, "0123456789abcdef");
@@ -85,7 +64,7 @@ void	conv_bang(t_flag *flag)
 	flag->lstr = ft_strlen(flag->str);
 }
 
-void	conv_pt(t_flag *flag)
+static void	conv_pt(t_flag *flag)
 {
 	flag->str = ft_ptohex((void *)flag->arg, "0123456789abcdef");
 	flag->str = dotpad(flag);
@@ -97,7 +76,7 @@ void	conv_pt(t_flag *flag)
 	flag->lstr = ft_strlen(flag->str);
 }
 
-void	conv_str(t_flag *flag)
+static void	conv_str(t_flag *flag)
 {
 	char	*tmp;
 
@@ -114,4 +93,25 @@ void	conv_str(t_flag *flag)
 		free (tmp);
 	}
 	flag->str = mfwpad(flag, ' ', 0);
+}
+
+void	createstr(t_flag *flag)
+{
+	if (flag->conv == 'd' || flag->conv == 'i')
+		conv_di(flag);
+	if (flag->conv == 'u')
+		conv_u(flag);
+	if (flag->conv == 'x' || flag->conv == 'X')
+		conv_bang(flag);
+	if (flag->conv == '%')
+		flag->str = conv_percent(flag);
+	if (flag->conv == 'p')
+		conv_pt(flag);
+	if (flag->conv == 'c')
+		flag->str = chartostr(flag->arg);
+	if (flag->conv == 'c' && flag->arg == 0)
+		conv_zerochar(flag);
+	if (flag->conv == 's' || flag->conv == 'c')
+		conv_str(flag);
+	flag->lstr = ft_strlen(flag->str);
 }

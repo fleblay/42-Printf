@@ -6,12 +6,11 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 09:50:14 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 12:29:48 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:18:26 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
+#include <stdlib.h>
 
 static int	ft_lenptrhex(unsigned long long nbr)
 {
@@ -43,6 +42,19 @@ static char	*ft_createtabptr(unsigned long long nbr)
 	return (tab);
 }
 
+static char	*ft_catchz(void)
+{
+	char	*tab;
+
+	tab = NULL;
+	tab = (char *)malloc(2 * sizeof(char));
+	if (! tab)
+		return (NULL);
+	tab[0] = '0';
+	tab[1] = '\0';
+	return (tab);
+}
+
 char	*ft_ptohex(void *p, const char *base)
 {
 	char				*tab;
@@ -65,25 +77,3 @@ char	*ft_ptohex(void *p, const char *base)
 	}
 	return (tab);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	char *fred = "abcdef";
-	printf("%s\n", ft_itohex(256987, "0123456789ABCDEF"));
-	printf("real : %#X\n", 256987);
-	printf("%s\n", ft_itohex(-256987, "0123456789abcdef"));
-	printf("real : %#x\n", -256987);
-	printf("%s\n", ft_itohex(0, "0123456789abcdef"));
-	printf("real : %#x\n", 0);
-	printf("%s\n", ft_itohex(-25, "0123456789abcdef"));
-	printf("real : %#x\n", -25);
-	printf("%s\n", ft_itohex(-2147483647, "0123456789abcdef"));
-	printf("real : %#x\n", -2147483647);
-	printf("%s\n", ft_ptohex(fred, "0123456789abcdef"));
-	printf("real : %p\n",  fred);
-	printf("sizeof ptr : %lu\n", sizeof(void *));
-	printf("sizeof int : %lu\n", sizeof(int));
-	return (0);
-}*/

@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_uitoa.c                                         :+:      :+:    :+:   */
+/*   ft_luitoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 12:21:23 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 18:04:56 by fle-blay         ###   ########.fr       */
+/*   Created: 2021/12/03 11:18:46 by fle-blay          #+#    #+#             */
+/*   Updated: 2021/12/03 11:18:49 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
+#include <stdlib.h>
 
 static int	ft_lennb(long nbr)
 {
@@ -48,7 +47,7 @@ static char	*ft_createtab(long nbr)
 	return (tab);
 }
 
-static char	*ft_catchzero(void)
+static char	*ft_catchz(void)
 {
 	char	*tab;
 
@@ -71,7 +70,7 @@ char	*ft_uitoa(unsigned int n)
 	nbr = n;
 	i = 0;
 	if (nbr == 0)
-		return (ft_catchzero());
+		return (ft_catchz());
 	tab = ft_createtab(nbr);
 	if (! tab)
 		return (NULL);
@@ -96,7 +95,7 @@ char	*ft_ltoa(long n)
 	nbr = n;
 	i = 0;
 	if (nbr == 0)
-		return (ft_catchzero());
+		return (ft_catchz());
 	tab = ft_createtab(nbr);
 	if (! tab)
 		return (NULL);

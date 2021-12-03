@@ -6,12 +6,11 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:35:51 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 11:00:56 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:09:14 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "ft_printf.h"
+#include <stdlib.h>
 
 static int	ft_lennbhex(unsigned long long nbr)
 {
@@ -43,7 +42,7 @@ static char	*ft_createtab(unsigned long long nbr)
 	return (tab);
 }
 
-char	*ft_catchz(void)
+static char	*ft_catchz(void)
 {
 	char	*tab;
 

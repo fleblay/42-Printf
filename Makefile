@@ -6,7 +6,7 @@ ft_printf_conv2.c\
 ft_printf_display.c\
 ft_printf_flag.c\
 ft_ptohex.c\
-ft_uitoa.c\
+ft_luitoa.c\
 utils.c\
 utils2.c
 

@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:43:46 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 09:42:57 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:32:15 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,15 @@ void		getflag2(t_flag *flag, char *s);
 void		printflag(t_flag *flag);
 void		cleanflag(t_flag *flag);
 void		createstr(t_flag *flag);
-char		*ft_catchz(void);
 char		*dotpad(t_flag *flag);
 char		*ft_itohex(unsigned long long n, const char *base);
 char		*ft_ptohex(void *p, const char *base);
 char		*mfwpad(t_flag *flag, char padchar, int r);
 long long	valabs(long long nb);
 char		*addsign(t_flag *flag);
-void		conv_di(t_flag *flag);
 void		conv_xX(t_flag *flag);
 char		*addprefix(t_flag *flag);
-void		conv_bang(t_flag *flag);
 char		*conv_percent(t_flag *flag);
-void		conv_pt(t_flag *flag);
-void		conv_str(t_flag *flag);
 char		*chartostr(char c);
 void		conv_zerochar(t_flag *flag);
 void		ft_putnstrzero_fd(char *s, int fd, int size);
