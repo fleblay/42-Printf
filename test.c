@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:36:30 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 15:54:55 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 18:02:42 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,24 @@ int main(void)
 	//printf("%8.0d\n", 0);
 	//ft_printf("%.0d\n", 9);
 	//printf("%.0d\n", 9);
-	printf("%#015x\n", 42);
-	ft_printf("%#015x\n", 42);
-	printf("%#015.10x\n", 42);
-	ft_printf("%#015.10x\n", 42);
-	printf("%015.10x\n", 42);
-	ft_printf("%015.10x\n", 42);
+	//printf("%#015x\n", 42);
+	//ft_printf("%#015x\n", 42);
+	//printf("%#015.10x\n", 42);
+	//ft_printf("%#015.10x\n", 42);
+	//printf("%015.10x\n", 42);
+	//ft_printf("%015.10x\n", 42);
+	//printf("%4d\n", -12);
+	//ft_printf("%4d\n", -12);
+	//printf("%04.4d\n", -12);
+	//printf("%04.4d\n", -12);
+	ft_printf("%5%\n");
+	printf("%5%\n");
+	ft_printf("%8.5%\n");
+	printf("%8.5%\n");
+	ft_printf("%0.5%\n");
+	printf("%0.5%\n");
+	ft_printf("%-8.5%\n");
+	printf("%-8.5%\n");
 
 	//while (1);
 
