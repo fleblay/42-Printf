@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 11:32:42 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 15:53:54 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	cleanflag(t_flag *flag)
 		flag->zero = 0;
 	if (flag->plus == 1 && flag->spce == 1)
 		flag->spce = 0;
-	if (flag->bang == 1 && flag->zero == 1)
+	if (flag->bang == 1 && flag->zero == 1 && flag->dot)
 		flag->zero = 0;
 	if (flag->minus == 1 && flag->spce == 1)
 		flag->spce = 0;

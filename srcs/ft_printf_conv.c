@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 11:31:07 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 15:53:19 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ static void	conv_bang(t_flag *flag)
 		if (!flag->str)
 			return ;
 	}
+	if (flag->zero && flag->bang && flag->arg != 0)
+		flag->str = mfwpad(flag, '0', 2);
 	flag->str = dotpad(flag);
-	if (flag->dot && flag->dotn != 0)
-	{
-		flag->str = mfwpad(flag, ' ', 0);
-	}
 	if (flag->bang)
 		flag->str = addprefix(flag);
+	if (flag->dot && flag->dotn != 0)
+		flag->str = mfwpad(flag, ' ', 0);
 	if (!flag->zero && (flag->dotn == 0 || !flag->dot))
 		flag->str = mfwpad(flag, ' ', 0);
-	if (flag->zero)
+	if (flag->zero && !flag->bang)
 		flag->str = mfwpad(flag, '0', 0);
 	flag->lstr = ft_strlen(flag->str);
 }
