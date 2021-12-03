@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 15:56:01 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 10:55:38 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,6 @@ t_flag	initflag(void)
 	flag.arg = 0;
 	flag.minus = 0;
 	return (flag);
-}
-
-int	posnxtflag(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (! str)
-		return (0);
-	while (str[i] && ! ft_isarg(str[i]))
-		i++;
-	return (i);
-}
-
-int	isnamong(char *str, char c, int len)
-{
-	int	i;
-
-	i = 0;
-	if (! str || len <= 0)
-		return (0);
-	while (i < len && str[i])
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
 }
 
 void	getflag1(t_flag *flag, char *s)
@@ -110,37 +82,44 @@ void	getflag2(t_flag *flag, char *s)
 	}
 }
 
-/*
-void	getflag2(t_flag *flag, char *s, va_list arg)
+void	getarg(t_flag *flag, va_list arg)
 {
-	int i;
+	char	*tmp;
 
-	i = 0;
-	if (! flag || ! s)
-		return;
-	while (i < posnxtflag(s) && s[i])
-	{
-		if (ft_isdigit(s[i]) && s[i] != '0' && flag->mfw == 0
-				&& !isnamong(s, '.', i))
-			flag->mfw = ft_atoi(s + i);
-		if (s[i] == '.' && i + 1 < posnxtflag(s) && ft_isdigit(s[i + 1])
-			&& s[i + 1]!= '0')
-			flag->dotn = ft_atoi (s + i + 1);
-		i++;
-	}
+	tmp = NULL;
 	if (flag->conv == 'p')
 		flag->arg = va_arg(arg, unsigned long long);
+	else if (flag->conv == 'u')
+		flag->arg = va_arg(arg, unsigned int);
 	else if (flag->conv == 's')
-		flag->str = ft_strdup(va_arg(arg, char *));
-//	else if (flag->conv == 'c')
-//		flag->str = chartostr(va_arg(arg, int));
-	else
+	{
+		tmp = va_arg(arg, char *);
+		if (tmp)
+			flag->str = ft_strdup(tmp);
+		else
+			flag->str = ft_strdup("(null)");
+	}
+	else if (flag->conv != '%')
 	{
 		flag->arg = (int)va_arg(arg, long long);
-		//A investiguer ++++ !!!!
-		//printf("arg -> %lld\n", flag->arg);
 		if (flag->arg < 0)
 			flag->minus = 1;
 	}
 }
-*/
+
+void	cleanflag(t_flag *flag)
+{
+	if (flag->dash == 1 && flag->zero == 1)
+		flag->zero = 0;
+	if (flag->dot == 1 && flag->zero == 1)
+		flag->zero = 0;
+	if (flag->plus == 1 && flag->spce == 1)
+		flag->spce = 0;
+	if (flag->bang == 1 && flag->zero == 1)
+		flag->zero = 0;
+	if (flag->minus == 1 && flag->spce == 1)
+		flag->spce = 0;
+	if (flag->minus == 1 && flag->plus == 1)
+		flag->plus = 0;
+}
+

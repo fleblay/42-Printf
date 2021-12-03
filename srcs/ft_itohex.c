@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:35:51 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/02 12:33:09 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/03 11:00:56 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,25 +78,3 @@ char	*ft_itohex(unsigned long long n, const char *base)
 	}
 	return (tab);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	char *fred = "abcdef";
-	printf("%s\n", ft_itohex(256987, "0123456789ABCDEF"));
-	printf("real : %#X\n", 256987);
-	printf("%s\n", ft_itohex(-256987, "0123456789abcdef"));
-	printf("real : %#x\n", -256987);
-	printf("%s\n", ft_itohex(0, "0123456789abcdef"));
-	printf("real : %#x\n", 0);
-	printf("%s\n", ft_itohex(-25, "0123456789abcdef"));
-	printf("real : %#x\n", -25);
-	printf("%s\n", ft_itohex(-2147483647, "0123456789abcdef"));
-	printf("real : %#x\n", -2147483647);
-	printf("%s\n", ft_ptohex(fred, "0123456789abcdef"));
-	printf("real : %p\n",  fred);
-	printf("sizeof ptr : %lu\n", sizeof(void *));
-	printf("sizeof int : %lu\n", sizeof(int));
-	return (0);
-}*/

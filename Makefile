@@ -1,12 +1,14 @@
-SRCS_LIST = ft_itohex.c\
+SRCS_LIST = \
+ft_itohex.c\
 ft_printf.c\
 ft_printf_conv.c\
 ft_printf_conv2.c\
-ft_printf_conv3.c\
+ft_printf_display.c\
 ft_printf_flag.c\
-ft_printf_flag2.c\
 ft_ptohex.c\
-ft_uitoa.c
+ft_uitoa.c\
+utils.c\
+utils2.c
 
 SRCS_DIR = srcs/
 
