@@ -6,19 +6,27 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 10:44:16 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/06 10:24:52 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:28:43 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
+#include <stdlib.h>
+
+static void	dualfree(void *s1, void *s2)
+{
+	free (s1);
+	free (s2);
+}
 
 char	*mfwpad(t_flag *flag, char padchar, int r)
 {
 	char	*tmp;
 	char	*ret;
 
-	ret = NULL;
+	if (! flag->str)
+		return (NULL);
 	flag->lstr = ft_strlen(flag->str);
 	if (flag->lstr + r < flag->mfw)
 	{
@@ -35,8 +43,7 @@ char	*mfwpad(t_flag *flag, char padchar, int r)
 			free(tmp);
 			return (NULL);
 		}
-		free(flag->str);
-		free(tmp);
+		dualfree(flag->str, tmp);
 		flag->str = ret;
 	}
 	return (flag->str);
@@ -47,6 +54,8 @@ char	*addprefix(t_flag *flag)
 	char	*tmp;
 
 	tmp = NULL;
+	if (! flag->str)
+		return (NULL);
 	flag->lstr = ft_strlen(flag->str);
 	if ((flag->conv == 'x' && flag->arg != 0) || flag->conv == 'p')
 	{
@@ -74,6 +83,8 @@ char	*dotpad(t_flag *flag)
 
 	tmp = NULL;
 	ret = NULL;
+	if (! flag->str)
+		return (NULL);
 	flag->lstr = ft_strlen(flag->str);
 	if (flag->lstr < flag->dotn)
 	{
@@ -98,7 +109,8 @@ char	*addsign(t_flag *flag)
 {
 	char	*tmp;
 
-	tmp = NULL;
+	if (! flag->str)
+		return (NULL);
 	flag->lstr = ft_strlen(flag->str);
 	if (flag->minus)
 	{
@@ -112,7 +124,7 @@ char	*addsign(t_flag *flag)
 	{
 		if (flag->spce)
 			tmp = ft_strjoin(" ", flag->str);
-		else if (flag->plus)
+		else
 			tmp = ft_strjoin("+", flag->str);
 		if (!tmp)
 			return (NULL);

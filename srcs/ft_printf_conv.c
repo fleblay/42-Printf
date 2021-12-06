@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/06 10:21:17 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:47:52 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	conv_di(t_flag *flag)
 		flag->str = mfwpad(flag, '0', flag->minus | flag->plus | flag->spce);
 		flag->str = addsign(flag);
 	}
-	flag->lstr = ft_strlen(flag->str);
 }
 
 static void	conv_bang(t_flag *flag)
@@ -61,7 +60,6 @@ static void	conv_bang(t_flag *flag)
 		flag->str = mfwpad(flag, ' ', 0);
 	if (flag->zero && !flag->bang)
 		flag->str = mfwpad(flag, '0', 0);
-	flag->lstr = ft_strlen(flag->str);
 }
 
 static void	conv_pt(t_flag *flag)
@@ -73,7 +71,6 @@ static void	conv_pt(t_flag *flag)
 	flag->str = addprefix(flag);
 	if (flag->dotn == 0 || !flag->dot)
 		flag->str = mfwpad(flag, ' ', 0);
-	flag->lstr = ft_strlen(flag->str);
 }
 
 static void	conv_str(t_flag *flag)
@@ -113,5 +110,6 @@ void	createstr(t_flag *flag)
 		conv_zerochar(flag);
 	if (flag->conv == 's' || flag->conv == 'c')
 		conv_str(flag);
-	flag->lstr = ft_strlen(flag->str);
+	if (flag->str)
+		flag->lstr = ft_strlen(flag->str);
 }

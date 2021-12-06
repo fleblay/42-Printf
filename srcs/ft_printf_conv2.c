@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 18:43:48 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/06 10:07:38 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/06 11:47:52 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	conv_u(t_flag *flag)
 		flag->str = mfwpad(flag, '0', flag->minus | flag->plus | flag->spce);
 		flag->str = addsign(flag);
 	}
-	flag->lstr = ft_strlen(flag->str);
 }
 
 void	conv_percent(t_flag *flag)
@@ -46,7 +45,6 @@ void	conv_percent(t_flag *flag)
 		flag->str = mfwpad(flag, ' ', 0);
 	if (flag->zero)
 		flag->str = mfwpad(flag, '0', 0);
-	flag->lstr = ft_strlen(flag->str);
 }
 
 void	conv_zerochar(t_flag *flag)
