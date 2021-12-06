@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 11:52:54 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 15:53:54 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:10:35 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	getflag2(t_flag *flag, char *s)
 		if (ft_isdigit(s[i]) && s[i] != '0' && flag->mfw == 0
 			&& !isnamong(s, '.', i))
 			flag->mfw = ft_atoi(s + i);
-		if (s[i] == '.' && i + 1 < posnxtflag(s) && ft_isdigit(s[i + 1])
-			&& s[i + 1] != '0')
+		if (s[i] == '.' && i + 1 < posnxtflag(s) && ft_isdigit(s[i + 1]))
 			flag->dotn = ft_atoi (s + i + 1);
 		i++;
 	}
@@ -111,12 +110,10 @@ void	cleanflag(t_flag *flag)
 {
 	if (flag->dash == 1 && flag->zero == 1)
 		flag->zero = 0;
-	if (flag->dot == 1 && flag->zero == 1)
+	if (flag->arg != '%' && flag->dot == 1 && flag->zero == 1)
 		flag->zero = 0;
 	if (flag->plus == 1 && flag->spce == 1)
 		flag->spce = 0;
-	if (flag->bang == 1 && flag->zero == 1 && flag->dot)
-		flag->zero = 0;
 	if (flag->minus == 1 && flag->spce == 1)
 		flag->spce = 0;
 	if (flag->minus == 1 && flag->plus == 1)

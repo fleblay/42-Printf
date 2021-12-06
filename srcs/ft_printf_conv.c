@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:32:58 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 15:53:19 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/06 10:21:17 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	createstr(t_flag *flag)
 	if (flag->conv == 'x' || flag->conv == 'X')
 		conv_bang(flag);
 	if (flag->conv == '%')
-		flag->str = conv_percent(flag);
+		conv_percent(flag);
 	if (flag->conv == 'p')
 		conv_pt(flag);
 	if (flag->conv == 'c')

@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 17:43:46 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/03 11:32:15 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/06 09:12:17 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ long long	valabs(long long nb);
 char		*addsign(t_flag *flag);
 void		conv_xX(t_flag *flag);
 char		*addprefix(t_flag *flag);
-char		*conv_percent(t_flag *flag);
+void		conv_percent(t_flag *flag);
 char		*chartostr(char c);
 void		conv_zerochar(t_flag *flag);
 void		ft_putnstrzero_fd(char *s, int fd, int size);
