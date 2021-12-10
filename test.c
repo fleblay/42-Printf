@@ -6,7 +6,7 @@
 /*   By: fle-blay <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 18:36:30 by fle-blay          #+#    #+#             */
-/*   Updated: 2021/12/06 09:46:17 by fle-blay         ###   ########.fr       */
+/*   Updated: 2021/12/10 15:21:23 by fle-blay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,16 @@ int main(void)
 	//printf("'%0.5%'\n");
 	//ft_printf("'%-8.5%'\n");
 	//printf("'%-8.5%'\n");
-	ft_printf("'%8.5s'\n", "abcdefghi");
-	printf("'%8.5s'\n", "abcdefghi");
-	ft_printf("'%-8.5s'\n", "abcdefghi");
-	printf("'%-8.5s'\n", "abcdefghi");
-	ft_printf("'%.05s'\n", "abcdefghi");
-	printf("'%.05s'\n", "abcdefghi");
-	ft_printf("'%.5s'\n", "abcdefghi");
-	printf("'%.5s'\n", "abcdefghi");
+	//ft_printf("'%8.5s'\n", "abcdefghi");
+	//printf("'%8.5s'\n", "abcdefghi");
+	//ft_printf("'%-8.5s'\n", "abcdefghi");
+	//printf("'%-8.5s'\n", "abcdefghi");
+	//ft_printf("'%.05s'\n", "abcdefghi");
+	//printf("'%.05s'\n", "abcdefghi");
+	//ft_printf("'%.5s'\n", "abcdefghi");
+	//printf("'%.5s'\n", "abcdefghi");
+	printf("%.10%\n");
+	ft_printf("%.10%\n");
 
 	//while (1);
 
