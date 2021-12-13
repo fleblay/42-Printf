@@ -17,6 +17,8 @@ SRCS = ${addprefix ${SRCS_DIR}, ${SRCS_LIST}}
 OBJS = ${SRCS:.c=.o}
 
 HEADER_DIR = includes/
+HEADER_NAME = ft_printf.h libft.h
+HEADER = ${addprefix ${HEADER_DIR}, ${HEADER_NAME}}
 
 LIBFT_DIR = libft/
 LIBFT_NAME = libft.a
@@ -30,10 +32,12 @@ CFLAGS= -Wall -Wextra -Werror
 
 all : ${NAME}
 
-${NAME} : ${OBJS}
-	make -C ${LIBFT_DIR}
+${NAME} : ${OBJS} ${HEADER} ${LIBFT} 
 	cp ${LIBFT} ./${NAME}
-	ar -rc ${NAME} ${OBJS} ${LIBFT}
+	ar -rc ${NAME} ${OBJS}
+
+${LIBFT} :
+	make -C ${LIBFT_DIR}
 	
 %.o : %.c ${HEADER}
 	${CC} ${CFLAGS} -c $< -I ${HEADER_DIR} -o $@ 

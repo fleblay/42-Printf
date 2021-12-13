@@ -59,7 +59,7 @@ ${NAME} : ${OBJS} ${HEADER}
 bonus : ${NAME} ${BONUS_OBJS}
 	ar -rc ${NAME} ${BONUS_OBJS}
 
-%.o : %.c
+%.o : %.c ${HEADER}
 	${CC} ${CFLAGS} -c $< 
 
 clean :
